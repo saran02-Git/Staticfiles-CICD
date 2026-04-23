@@ -18,15 +18,27 @@ pipeline {
                 sh 'docker build -t $IMAGE .'
             }
         }
-        
+
         stage('Docker Login') {
             steps {
-                sh 'docker login -u saran0702 -p Saran@123'
+                withCredentials([usernamePassword(credentialsId: 'docker-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                }
             }
         }
+
         stage('Push Image') {
             steps {
                 sh 'docker push $IMAGE'
+            }
+        }
+
+        stage('Deploy to K8s') {
+            steps {
+                sh '''
+                kubectl apply -f k8s/deployment.yaml
+                kubectl apply -f k8s/service.yaml
+                '''
             }
         }
     }
