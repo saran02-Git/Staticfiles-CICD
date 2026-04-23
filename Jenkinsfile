@@ -18,7 +18,12 @@ pipeline {
                 sh 'docker build -t $IMAGE .'
             }
         }
-
+        
+        stage('Docker Login') {
+            steps {
+                sh 'docker login -u saran0702 -p YOUR_PASSWORD'
+            }
+        }
         stage('Push Image') {
             steps {
                 sh 'docker push $IMAGE'
