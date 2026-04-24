@@ -1,103 +1,109 @@
-<<<<<<< HEAD
-# Staticfiles-CICD
-CI/CD pipeline for a static application using Jenkins, Docker, Terraform, and AWS EKS
-=======
-DevOps Practice Project – Dist Directory
+Trend App – CI/CD Deployment using Jenkins, Docker, Terraform, and AWS EKS
 
-This repository contains the production-ready build files (dist folder) for DevOps practice and deployment exercises.
+Project Overview:
+This project demonstrates a complete CI/CD pipeline to build, containerize, and deploy a React application to a Kubernetes cluster using Jenkins and AWS services.
+The application source code was cloned from the provided GitHub repository and deployed in a production-ready environment.
+The focus of this project is on infrastructure provisioning, CI/CD automation, containerization, Kubernetes deployment, and monitoring.
 
-It is intentionally structured to help learners focus on CI/CD pipelines, hosting, containerization, and infrastructure setup rather than application development.
+Architecture:
+GitHub → Jenkins Pipeline → Docker Build → DockerHub → Amazon EKS → LoadBalancer → User
 
-📁 What This Repository Contains
+Source Code : GitHub
+CI/CD : Jenkins Pipeline
+Infrastructure Provisioning : Terraform
+Build & Containerization : Docker
+Container Registry : DockerHub
+Orchestration : Amazon EKS (Kubernetes)
+Deployment : Kubernetes Deployment & Service (LoadBalancer)
+Monitoring : Grafana
 
-dist/ – Compiled and production-ready static files
+Workflow:
+1. Code is pushed to GitHub repository
+2. GitHub webhook triggers Jenkins pipeline automatically
+3. Jenkins pipeline:
+   - Pulls latest source code from GitHub
+   - Builds Docker image for the application
+   - Tags and pushes image to DockerHub
+4. Terraform provisions required AWS infrastructure such as VPC, IAM, EC2, and related resources
+5. Kubernetes deployment:
+   - Jenkins uses kubectl to apply deployment and service YAML files
+   - Amazon EKS pulls the latest image from DockerHub
+   - Application is deployed to the cluster
+6. Service exposes the application through AWS LoadBalancer
+7. Grafana is used to monitor application and cluster health.[file:19]
 
-HTML
+Technologies Used:
+AWS
+Jenkins
+Docker
+Terraform
+Amazon EKS
+Kubernetes
+DockerHub
+GitHub
+Grafana
 
-CSS
 
-JavaScript
+Project Requirements Covered:
+Dockerfile created to containerize the React application
+Terraform main.tf used to provision infrastructure
+DockerHub repository used to store container images
+Kubernetes deployment and service YAML files created
+Jenkins declarative pipeline configured for build, push, and deploy
+GitHub webhook integrated with Jenkins for automatic builds
+gitignore and dockerignore files added for proper version control
+Open-source monitoring setup implemented for cluster or application health.
 
-Assets (images, fonts, etc.)
+Deployment Files:
+Dockerfile – Container image build instructions
+main.tf – Terraform infrastructure configuration
+deployment.yaml – Kubernetes Deployment configuration
+service.yaml – Kubernetes Service configuration
+Jenkinsfile – Declarative CI/CD pipeline definition
+.gitignore – Files ignored by Git
+.dockerignore – Files ignored during Docker build
 
-These files are ready to deploy to:
+Application Source:
+Repository URL : https://github.com/Vennilavanguvi/Trend.git
 
-Web servers (Nginx / Apache)
+Application Access:
+The application is exposed through a Kubernetes LoadBalancer service running on Amazon EKS.
+The deployed application is expected to run on port 3000 as specified in the project requirements.
 
-Cloud platforms (AWS S3, Azure Blob, GCP Storage)
+Monitoring:
+Grafana was used as an open-source monitoring solution to observe the health and performance of the application and cluster resources.
+A lightweight monitoring setup was implemented to suit available infrastructure capacity while still providing useful visibility into deployment health.
 
-Containerized environments (Docker + Nginx)
+Verification Commands:
+kubectl get pods
+kubectl get svc -o wide
 
-Kubernetes clusters
+The deployment verification confirms that the application is running in the Kubernetes cluster and exposed externally through a LoadBalancer service.
 
-CI/CD pipeline demonstrations
+Challenges Faced:
+This project involved troubleshooting across multiple DevOps and cloud infrastructure layers.
 
-🎯 Purpose of This Repository
+Key challenges included:
+Jenkins installation and plugin configuration on EC2
+Docker image build and push failures
+Pod scheduling issues due to limited node capacity
+Kubernetes metrics-server issues
 
-This repository is designed for:
+Solutions Implemented:
+Configured Jenkins with required plugins for Git, Docker, Kubernetes, and pipeline execution
+Built and pushed Docker images successfully to DockerHub
+Scaled or adjusted cluster resources to handle pod scheduling
+Fixed metrics-server and monitoring configuration
 
-DevOps beginners
+Outcome
+Fully functional CI/CD pipeline
+Successful Docker image build and push
+Infrastructure provisioned using Terraform
+Kubernetes deployment automated through Jenkins
+Application successfully deployed on Amazon EKS
+Monitoring implemented using Grafana
+Application accessible through LoadBalancer
 
-CI/CD practice
-
-Deployment pipeline testing
-
-Docker & Kubernetes deployment exercises
-
-Web server configuration practice
-
-Reverse proxy and load balancer setup
-
-The goal is to simulate real-world deployment scenarios using already built application files.
-
-❓ Why is there NO package.json?
-
-You may notice that this repository does not include:
-
-package.json
-
-node_modules
-
-Source code (src/)
-
-Build tools configuration
-
-✅ Reason:
-
-This repository only contains the final production build output (dist), not the development source code.
-
-In a typical project:
-
-Developers write source code.
-
-The project is built using tools like:
-
-Node.js
-
-Webpack
-
-Vite
-
-React (or other frameworks)
-
-A dist/ folder is generated.
-
-Only the production build is deployed to servers.
-
-This repository represents step 4 only.
-
-Since this is already the compiled output:
-
-No dependencies are required
-
-No build process is required
-
-No package.json is needed
->>>>>>> 320282c (Create README.md)
-test webhook
-test webhook
-test webhook
-test webhook1
-test webhookss
-final test
-final test 2
+Conclusion:
+This project reflects hands-on experience in building and deploying a production-style CI/CD pipeline using Jenkins, Docker, Terraform, AWS, and Kubernetes. It highlights practical implementation of automation, infrastructure provisioning, containerization, orchestration, monitoring, and troubleshooting in a real-world DevOps workflow.
+This project reflects hands-on experience in building and deploying a production-style CI/CD pipeline using Jenkins, Docker, Terraform, AWS, and Kubernetes. It highlights practical implementation of automation, infrastructure provisioning, containerization, orchestration, monitoring, and troubleshooting in a real-world DevOps workflow.[file:19]
