@@ -68,7 +68,11 @@ Repository URL : https://github.com/Vennilavanguvi/Trend.git
 
 Application Access:
 The application is exposed through a Kubernetes LoadBalancer service running on Amazon EKS.
-The deployed application is expected to run on port 3000 as specified in the project requirements.
+The deployed application runs on port 3000 as specified in the project requirements.
+The application is served using Nginx configured to listen on port 3000, ensuring the container and service both expose the application correctly.
+
+Application URL:
+http://a4ca254fa7b8f42aa94f095dd9b4f6cf-2084988577.ap-south-1.elb.amazonaws.com:3000
 
 Monitoring:
 Grafana was used as an open-source monitoring solution to observe the health and performance of the application and cluster resources.
@@ -106,4 +110,4 @@ Application accessible through LoadBalancer
 
 Conclusion:
 This project reflects hands-on experience in building and deploying a production-style CI/CD pipeline using Jenkins, Docker, Terraform, AWS, and Kubernetes. It highlights practical implementation of automation, infrastructure provisioning, containerization, orchestration, monitoring, and troubleshooting in a real-world DevOps workflow.
-This project reflects hands-on experience in building and deploying a production-style CI/CD pipeline using Jenkins, Docker, Terraform, AWS, and Kubernetes. It highlights practical implementation of automation, infrastructure provisioning, containerization, orchestration, monitoring, and troubleshooting in a real-world DevOps workflow.[file:19]
+This project reflects hands-on experience in building and deploying a production-style CI/CD pipeline using Jenkins, Docker, Terraform, AWS, and Kubernetes. It highlights practical implementation of automation, infrastructure provisioning, containerization, orchestration, monitoring, and troubleshooting in a real-world DevOps workflow.
